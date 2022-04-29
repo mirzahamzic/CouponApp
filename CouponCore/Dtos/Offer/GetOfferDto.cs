@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CouponCore.Dtos
 {
-    internal class GetOfferDto
+    public class GetOfferDto
     {
         public int Id { get; set; }
         public virtual string Name { get; set; }
