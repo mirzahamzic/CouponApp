@@ -44,7 +44,7 @@ namespace CouponAPI
 
             app.UseAuthorization();
 
-            app.UseMiddleware(typeof(ExceptionHandlingMiddleware)); //exception middleware
+            //app.UseMiddleware(typeof(ExceptionHandlingMiddleware)); //exception middleware
 
             app.UseEndpoints(endpoints =>
             {

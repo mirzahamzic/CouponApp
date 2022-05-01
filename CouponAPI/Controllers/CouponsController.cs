@@ -23,12 +23,12 @@ namespace CouponAPI.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult GenerateCoupon([FromQuery] int offerId, int numberOfCoupons)
+        public async Task<IActionResult> GenerateCoupon([FromQuery] int offerId, int numberOfCoupons)
         {
             if (!_offerservice.OfferExists(offerId))
                 return NotFound();
 
-            var response = _couponService.GenerateCoupon(offerId, numberOfCoupons);
+            var response = await _couponService.GenerateCoupon(offerId, numberOfCoupons);
             return Ok(response);
         }
 
