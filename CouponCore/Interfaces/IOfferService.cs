@@ -13,6 +13,7 @@ namespace CouponCore.Interfaces
         Task<GetOfferDto> Add(AddOfferDto product);
         Task<IEnumerable<GetOfferDto>> GetAll(OfferSearchDto req);
         Task<GetOfferDto> GetById(int id);
+        Task<GetOfferDto> UseCouponForTheOffer(int id);
         bool OfferExists(int id);
         bool OfferExists(string name);
     }

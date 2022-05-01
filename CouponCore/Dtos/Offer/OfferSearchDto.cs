@@ -8,7 +8,7 @@ namespace CouponCore.Dtos.Offer
 {
     public class OfferSearchDto : BaseSearchDto
     {
-        public string Name { get; set; }
+        public string ProductName { get; set; }
         public bool? IsActive { get; set; }
     }
 }

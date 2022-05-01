@@ -1,5 +1,6 @@
 using CouponAPI.Extensions;
 using CouponAPI.Middlewares;
+using CouponData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +51,8 @@ namespace CouponAPI
             {
                 endpoints.MapControllers();
             });
+
+            DBSeeder.Seed(app);
         }
     }
 }

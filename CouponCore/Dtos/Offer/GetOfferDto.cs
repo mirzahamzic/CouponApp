@@ -13,8 +13,9 @@ namespace CouponCore.Dtos
         public DateTime StartAt { get; set; }
         public DateTime EndAt { get; set; }
         public bool IsActive { get; set; }
+        public int CouponsLeft { get; set; }
         public List<GetCouponDto> Coupons { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        //public int ProductId { get; set; }
+        //public Product Product { get; set; }
     }
 }

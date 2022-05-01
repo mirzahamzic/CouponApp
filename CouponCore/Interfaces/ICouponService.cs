@@ -10,5 +10,6 @@ namespace CouponCore.Interfaces
         Task<IEnumerable<GetCouponDto>> GetAll(CouponSearchDto req);
 
         Task<IEnumerable<GetCouponDto>> GenerateCoupon(int offerId, int numberOfCoupons);
+        Task<string> RemoveCoupon(int couponId);
     }
 }

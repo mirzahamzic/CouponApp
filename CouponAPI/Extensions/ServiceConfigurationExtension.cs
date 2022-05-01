@@ -10,6 +10,7 @@ namespace CouponAPI.Extensions
         {
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICouponService, CouponService>();
+            services.AddScoped<IOfferService, OfferService>();
 
         }
     }

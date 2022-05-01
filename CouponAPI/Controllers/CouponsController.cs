@@ -11,10 +11,12 @@ namespace CouponAPI.Controllers
     public class CouponsController : ControllerBase
     {
         private readonly ICouponService _couponService;
+        private readonly IOfferService _offerservice;
 
-        public CouponsController(ICouponService couponService)
+        public CouponsController(ICouponService couponService, IOfferService offerservice)
         {
             _couponService = couponService;
+            _offerservice = offerservice;
         }
 
         [HttpPost("/generate")]
@@ -24,8 +26,8 @@ namespace CouponAPI.Controllers
         [ProducesResponseType(500)]
         public IActionResult GenerateCoupon([FromQuery] int offerId, int numberOfCoupons)
         {
-            //To do
-            //Check offer Id
+            if (!_offerservice.OfferExists(offerId))
+                return NotFound();
 
             var response = _couponService.GenerateCoupon(offerId, numberOfCoupons);
             return Ok(response);
@@ -38,6 +40,14 @@ namespace CouponAPI.Controllers
         public async Task<IActionResult> Get([FromQuery] CouponSearchDto req)
         {
             var response = await _couponService.GetAll(req);
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var response = await _couponService.RemoveCoupon(id);
+
             return Ok(response);
         }
     }

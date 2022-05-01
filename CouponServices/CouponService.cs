@@ -32,7 +32,7 @@ namespace CouponServices
             }
 
             await _context.AddRangeAsync(couponList);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             var response = _mapper.Map<List<GetCouponDto>>(couponList);
 
@@ -42,10 +42,25 @@ namespace CouponServices
         public async Task<IEnumerable<GetCouponDto>> GetAll(CouponSearchDto req)
         {
             var query = _context.Coupons.Include(c => c.Offer).ThenInclude(c => c.Product).AsQueryable();
+
             if (req.SerialNumber != null)
             {
                 query = query
                     .Where(x => x.SerialNumber == Guid.Parse(req.SerialNumber))
+                    .AsQueryable();
+            }
+
+            if (req.ProductName != null)
+            {
+                query = query
+                    .Where(x => x.Offer.Product.Name.ToLower().Contains(req.ProductName.ToLower()))
+                    .AsQueryable();
+            }
+
+            if (req.OfferName != null)
+            {
+                query = query
+                    .Where(x => x.Offer.Name.ToLower().Contains(req.OfferName.ToLower()))
                     .AsQueryable();
             }
 
@@ -62,6 +77,17 @@ namespace CouponServices
                 .ToListAsync();
 
             return dbCoupons;
+        }
+
+        public async Task<string> RemoveCoupon(int id)
+        {
+            var couponToRemove = await _context.Coupons.FirstOrDefaultAsync(c => c.Id == id);
+            _context.Remove(couponToRemove);
+            await _context.SaveChangesAsync();
+
+            var message = "Removed";
+
+            return message;
         }
     }
 }

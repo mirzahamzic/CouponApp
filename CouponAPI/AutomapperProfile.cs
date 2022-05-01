@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CouponCore.Dtos;
 using CouponCore.Entites;
+using System;
+using System.Linq;
 
 namespace CouponAPI
 {
@@ -14,6 +16,9 @@ namespace CouponAPI
                 .ForMember(dest => dest.ProductName, o => o.MapFrom(src => src.Offer.Product.Name))
                 .ReverseMap();
             CreateMap<GetProductDto, AddProductDto>().ReverseMap();
+            CreateMap<GetOfferDto, Offer>().ReverseMap()
+                .ForMember(dest => dest.IsActive, o => o.MapFrom(src => src.EndAt > DateTime.Today))
+                .ForMember(dest => dest.CouponsLeft, o => o.MapFrom(src => src.Coupons.Count()));
         }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CouponData.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220429132948_InitialCreate")]
+    [Migration("20220501122416_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
