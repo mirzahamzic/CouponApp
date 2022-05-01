@@ -34,7 +34,7 @@ namespace CouponServices
             await _context.Offers.AddAsync(newOffer);
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<GetOfferDto>(offer);
+            return _mapper.Map<GetOfferDto>(newOffer);
         }
 
         public async Task<IEnumerable<GetOfferDto>> GetAll(OfferSearchDto req)

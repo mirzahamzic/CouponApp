@@ -21,6 +21,8 @@ namespace CouponAPI
                 .ForMember(dest => dest.IsActive, o => o.MapFrom(src => src.EndAt > DateTime.Today))
                 .ForMember(dest => dest.CouponsLeft, o => o.MapFrom(src => src.Coupons.Count()));
             CreateMap<GeneratedCouponsDto, Coupon>().ReverseMap();
+            CreateMap<AddOfferDto, GetOfferDto>().ReverseMap();
+            CreateMap<AddOfferDto, Offer>().ReverseMap();
         }
     }
 }
