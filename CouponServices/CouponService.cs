@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CouponCore.Dtos;
+using CouponCore.Dtos.Coupon;
 using CouponCore.Entites;
 using CouponCore.Interfaces;
 using CouponData;
@@ -22,7 +23,7 @@ namespace CouponServices
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetCouponDto>> GenerateCoupon(int offerId, int numberOfCoupons)
+        public async Task<IEnumerable<GeneratedCouponsDto>> GenerateCoupon(int offerId, int numberOfCoupons)
         {
             var couponList = new List<Coupon>();
 
@@ -34,7 +35,7 @@ namespace CouponServices
             await _context.AddRangeAsync(couponList);
             await _context.SaveChangesAsync();
 
-            var response = _mapper.Map<List<GetCouponDto>>(couponList);
+            var response = _mapper.Map<List<GeneratedCouponsDto>>(couponList);
 
             return response;
         }
