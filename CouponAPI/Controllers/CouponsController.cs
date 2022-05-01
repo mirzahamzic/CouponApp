@@ -1,6 +1,5 @@
 ﻿using CouponCore.Dtos;
 using CouponCore.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -31,7 +30,6 @@ namespace CouponAPI.Controllers
 
             var response = _couponService.GenerateCoupon(offerId, numberOfCoupons);
             return Ok(response);
-
         }
 
         [HttpGet]

@@ -11,6 +11,5 @@ namespace CouponCore.Dtos
         public int OfferId { get; set; }
         public string OfferName { get; set; }
         public string ProductName { get; set; }
-
     }
 }

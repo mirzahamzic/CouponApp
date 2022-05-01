@@ -26,7 +26,6 @@ namespace CouponAPI
             services.AddSwaggerConfig(); //swagger config
             services.AddDBConnection(Configuration); //database config
             services.AddAutoMapper(typeof(Startup)); //automapper config
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +44,7 @@ namespace CouponAPI
 
             app.UseAuthorization();
 
-            app.UseMiddleware(typeof(ExceptionHandlingMiddleware)); //exception middleware 
+            app.UseMiddleware(typeof(ExceptionHandlingMiddleware)); //exception middleware
 
             app.UseEndpoints(endpoints =>
             {

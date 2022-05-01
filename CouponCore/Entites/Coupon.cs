@@ -9,6 +9,7 @@ namespace CouponCore.Entites
 
         [Required(ErrorMessage = "Serial number is required")]
         public Guid SerialNumber { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public int OfferId { get; set; }

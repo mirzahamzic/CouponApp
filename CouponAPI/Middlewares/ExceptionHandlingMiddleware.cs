@@ -11,12 +11,11 @@ namespace CouponAPI.Middlewares
     {
         public RequestDelegate requestDelegate;
 
-
         public ExceptionHandlingMiddleware(RequestDelegate requestDelegate)
         {
             this.requestDelegate = requestDelegate;
-
         }
+
         public async Task Invoke(HttpContext context, ILogger<ExceptionHandlingMiddleware> logger)
         {
             try
@@ -25,10 +24,10 @@ namespace CouponAPI.Middlewares
             }
             catch (Exception ex)
             {
-
                 await HandleException(context, ex, logger);
             }
         }
+
         private static Task HandleException(HttpContext context, Exception ex, ILogger<ExceptionHandlingMiddleware> logger)
         {
             logger.LogError(ex.ToString());

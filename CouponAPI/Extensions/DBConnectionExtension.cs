@@ -9,7 +9,6 @@ namespace CouponAPI.Extensions
     {
         public static void AddDBConnection(this IServiceCollection services, IConfiguration configuration)
         {
-
             services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
         }
     }

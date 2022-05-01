@@ -1,7 +1,5 @@
 ﻿using CouponCore.Dtos;
-using CouponCore.Entites;
 using CouponCore.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,7 +14,6 @@ namespace CouponAPI.Controllers
         public ProductsController(IProductService productService)
         {
             _productService = productService;
-
         }
 
         [HttpPost]

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CouponCore.Dtos.Offer
+﻿namespace CouponCore.Dtos.Offer
 {
     public class OfferSearchDto : BaseSearchDto
     {

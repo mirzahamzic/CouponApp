@@ -1,5 +1,4 @@
-﻿using CouponCore.Entites;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace CouponCore.Dtos
